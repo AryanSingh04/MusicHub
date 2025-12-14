@@ -11,7 +11,7 @@ const Navbar = () => {
       to="/"
       className="text-2xl font-semibold text-white font-mono"
     >
-      YTMusic
+      MusicHub
     </NavLink>
   </div>
 
