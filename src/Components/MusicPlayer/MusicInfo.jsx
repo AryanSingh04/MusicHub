@@ -7,7 +7,7 @@ const MusicInfo = ({ name, image, artists, isPlaying, id }) => {
       <Link to={`/song/${id}`} className='h-20 aspect-square rounded-full'>
       
         <img 
-          src={image?.url} 
+          src={image} 
           alt={`${name} cover`} 
           className={`h-20 aspect-square rounded-full ${isPlaying ? "animate-spin" : "animate-none"} duration-40`} 
         />
@@ -18,12 +18,7 @@ const MusicInfo = ({ name, image, artists, isPlaying, id }) => {
         </p>
         <p className='block line-clamp-1 w-full whitespace-nowrap text-ellipsis overflow-hidden text-sm'>
         {
-          artists?.primary?.map((e,i)=>{
-            if(i==artists.length-1){ 
-              return (<Link to={""} key={e.id}>{e.name}.</Link>)}
-            else{
-              return ( <span key={e.id}>{e.name},</span>)}
-          })
+         <span>{artists}</span>
          } 
         </p>
       </div>

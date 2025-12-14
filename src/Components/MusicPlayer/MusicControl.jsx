@@ -5,6 +5,7 @@ import { FaPlay } from "react-icons/fa6";
 import { FaPause } from "react-icons/fa";
 import formatTime from '../../Hooks/formatTime';
 const MusicControl = ({ audio,handleNext,handlePrev,nextId,prevId,isPlaying,handlePlayPause,duration,setDuration,currentTime,setCurrentTime,volume }) => {
+
   const audioRef = useRef(null);
 
   useEffect(() => {
@@ -65,7 +66,7 @@ const MusicControl = ({ audio,handleNext,handlePrev,nextId,prevId,isPlaying,hand
         <span>{formatTime(currentTime)}</span>
         <input
           type="range"
-          className=' w-[70%] md:w-[80%] slider'
+          className=' w-[70%] md:w-[80%] slider h-1'
           min="0"
           max={duration}
           value={currentTime}

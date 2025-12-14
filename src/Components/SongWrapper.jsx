@@ -1,4 +1,4 @@
-import React from 'react';
+import AlbumCard from './AlbumCard';
 
 const SongWrapper = ({list,name}) => {
   

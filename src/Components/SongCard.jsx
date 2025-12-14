@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { playPause, setActiveSong } from '../Redux/feature/PlayerSlice';
 import { FaPlay } from "react-icons/fa";
 import { FaPause } from 'react-icons/fa6';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { playSong } from '../HomePageApi/backend';
 const SongCard = ({name,artists,img,list,id,i,}) => {
     const {ActiveSong,isPlaying,ActiveList}=useSelector((s)=>s.player)
     const dispatch=useDispatch();
@@ -15,12 +15,10 @@ const SongCard = ({name,artists,img,list,id,i,}) => {
         return
       }
       }
-        const res=await  axios.get(`https://saavan-api-psi.vercel.app/api/songs/${id}`)
-          try{
-     const song=res.data.data?.[0]
-    dispatch(setActiveSong({list,song,i}))
-
-
+      const res= playSong(id);
+      try{
+        dispatch(setActiveSong({list:list,song:list[i],i:i}));
+        console.log(res)
 }
 catch(err){
  console.log(err)

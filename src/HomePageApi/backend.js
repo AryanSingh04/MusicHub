@@ -1,11 +1,8 @@
 import axios from 'axios';
-const baseUrl="https://music-back.vercel.app/";
+const baseUrl=import.meta.env.VITE_BACKEND_URL;
  const backend = async() => {
- const url="https://music-back.vercel.app/";
-// const url = "http://localhost:8000/";
-
  try {
-    const res= await axios.get(url,{
+    const res= await axios.get(baseUrl,{
         headers: {
             'Content-Type': 'application/json',
           }
@@ -66,6 +63,31 @@ const baseUrl="https://music-back.vercel.app/";
         console.log(err)
     }
  }
- 
+
+ const playSong=(id)=>{
+    try{
+        const res=`${baseUrl}song/stream/${id}`;
+        return res;
+    }catch(err){
+        console.log(err)
+    }  
+}
+
+const songDetail=async(id)=>{
+    try{
+        const res=await axios.get(`${baseUrl}song/${id}`)
+        return res.data.songs[0];
+    }catch(err){
+        console.log(err)
+    }}
+
+const artistDetail=async(id)=>{
+    try{
+        const res=await axios.get(`${baseUrl}artist/${id}`)
+        return res.data;
+    }catch(err){
+        console.log(err)
+    }
+}
  export default backend;
-export {homePage,searchPage,albumDetail};
+export {homePage,searchPage,albumDetail,playSong,songDetail,artistDetail};

@@ -6,24 +6,29 @@ import { Link } from 'react-router-dom'
 import CarasouelArtists from '../Components/CarasouelArtists'
 import Carasouel from '../Components/Carasouel'
 // import { setActiveSong, } from '../Redux/feature/PlayerSlice'
-import { useSelector,useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { albumDetail } from '../HomePageApi/backend'
+import MusicTab from '../Components/MusicTab'
+import DetailFallback from '../Components/DetailFallback'
 const AlbumDetails = () => {
   const [data,setData]=useState(null)
   const [rec,setRec]=useState(null)
   const [trending,setTrending]=useState(null)
   const [playCount,setPlayCount]=useState(0);
   const [duration,setDuration]=useState(0);
-  const dispatch=useDispatch()
+  const [loading,setLoading]=useState(true);
   const {id:albumId}=useParams()
-  const {ActiveList,ActiveSong}=useSelector((s)=>s.player)
+  const {ActiveSong}=useSelector((s)=>s.player)
   useEffect(()=>{
    const fetchAlbum=async()=>{
      const res=await albumDetail(albumId);
      console.log(res)
+     window.scrollTo(0,0)
      setData(res.albumDetails)
+     setLoading(false);
      setRec(res?.albumRecommendations)
      setTrending(res?.trendingAlbums)
+     console.log(res.albumRecommendations)
      let sum=0
      res?.albumDetails?.list.map((el)=>{
       sum+=Number((el.play_count));
@@ -37,12 +42,14 @@ const AlbumDetails = () => {
    }
    fetchAlbum()
   },[albumId])
-  
-  useEffect(()=>{
 
-  },[data])
+  if(loading){
+    return <DetailFallback/>
+  }
+  
   return (
     <div className='w-full text-white bg-[rgba(30,29,29,0.5)]'>
+     
         <div className='lg:h-[90vh] flex items-center justify-between flex-col lg:flex-row gap-4 md:gap-0'>
           <div className='w-full h-1/2 lg:w-2/5 lg:h-full flex flex-col items-center justify-center gap-4 pt-8 md:pt-0'>
           <img src={data?.image.replace("150x150","500x500")} alt="" className='w-2/5  lg:w-3/5 ' />     
@@ -67,26 +74,10 @@ const AlbumDetails = () => {
        </div>
       
            </div> 
-           <div className='w-full h-[74%] overflow-y-scroll flex flex-col items-center md:items-start  gap-4 pt-2'>
+           <div className='w-full h-[74%] overflow-y-scroll flex flex-col no-scrollbar items-center md:items-start  gap-4 pt-2'>
            {
             data?.list.map((el,i)=>(
-              <div key={i} className={`w-[95%]  flex h-24  items-center rounded-lg justify-between px-4 py-2  bg-[rgba(255,255,255,0.06)] hover:bg-white/30 ${ActiveSong?.id===el.id?"bg-[rgba(255,255,255,0.1)]":""}`} >
-                <div className='flex gap-4 w-full '>
-                   <img src={el?.image} alt="" className='w-16 aspect-square rounded-full' />
-                <div className='w-[calc(100%-8rem)]  '>
-                  <h1 className='font-bold text-lg w-4/5'>{el?.title}</h1>
-                  <div className='w-2/5'>
-<p className=' h-fit text-ellipsis overflow-hidden whitespace-nowrap'>{el.subtitle}</p>
-                  </div>
-                  
-                </div>
-                <div className='w-16 h-full self-center flex flex-col items-end justify-between py-2'>
-                  {
-                    el.more_info.duration && <h1 className='text-md'>{Math.floor(el.more_info.duration/60)}:{Math.floor(el.more_info.duration%60)<10?"0":""}{Math.floor(el.more_info.duration%60)}</h1>
-                  }
-                </div>
-                </div>
-              </div>
+          <MusicTab el={el} key={i} i={i} ActiveSong={ActiveSong} list={data?.list}/>
            ))}
            </div>
           {/* <div className='w-full absolute bottom-0 min-h-44'>
@@ -95,8 +86,8 @@ const AlbumDetails = () => {
           </div>
         </div>
         <CarasouelArtists list={data?.more_info?.artistMap?.primary_artists} title={"Artists From The Album"}/>
-        <Carasouel list={rec} title={"Song Recommendations"}/>
-        <Carasouel list={trending} title={"Songs Trending"}/>
+        <Carasouel list={rec} title={"Album Recommendations"}/>
+        <Carasouel list={trending} title={"Album Trending"}/>
     </div>
   )
 }

@@ -1,7 +1,5 @@
-import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import {useParams} from 'react-router-dom'
-import AlbumWrapper from '../Components/AlbumWrapper'
 import SongCardWrapper from '../Components/SongCardWrapper'
 import { searchPage } from '../HomePageApi/backend'
 import HomeFallback from '../Components/HomeFallback'

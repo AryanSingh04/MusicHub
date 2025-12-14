@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { CiCircleChevLeft, CiCircleChevRight } from "react-icons/ci";
-import SongCard from './SongCard';
+import AlbumCard from './AlbumCard';
 
 const Carousel = ({ list,title }) => {
   const containerRef = useRef();
@@ -38,8 +38,8 @@ const Carousel = ({ list,title }) => {
   return (
   
  <div>
-  <div className=' w-full whitespace-nowrap'>
-  <h2 className='px-4 lg:px-12 pt-4 font-bold text-3xl text-white text-ellipsis overflow-hidden'>{title}</h2>
+  <div className=' w-full whitespace-nowrap '>
+  <h2 className='px-4 lg:px-12 py-4 font-bold text-3xl text-white text-ellipsis overflow-hidden'>{title}</h2>
   </div>
 
  <div className='relative w-full px-8 flex items-center justify-center '>
@@ -50,11 +50,11 @@ const Carousel = ({ list,title }) => {
         <CiCircleChevLeft />
       </div>
       <div 
-        className='w-[95%] h-full flex  no-scrollbar overflow-x-auto py-4 gap-4 flex-nowrap' 
+        className='w-[95%] h-full flex overflow-x-scroll scroll-smooth scroll-[0] gap-4 no-scrollbar ' 
         ref={containerRef}
       >
         {list?.map((e, i) => (
-          <SongCard 
+          <AlbumCard 
             key={e?.id || i} 
             i={i}
             name={e.title || e.name} 

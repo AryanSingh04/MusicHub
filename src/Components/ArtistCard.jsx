@@ -1,9 +1,8 @@
-import React from 'react'
 import { FaPause,FaPlay } from 'react-icons/fa'
 import { Link } from 'react-router-dom';
 const ArtistCard = ({name,role,img,id}) => {
-    const isPlaying=false;
-    const ActiveList={}
+
+  const isPlaying=false;
     const handleClick=()=>{
       
     }
@@ -15,7 +14,7 @@ const ArtistCard = ({name,role,img,id}) => {
     { isPlaying? <FaPause/>:<FaPlay />}
       </div>
         </div>
-        <Link>
+        <Link to={"/artist/"+id} className='w-full text-center mt-2 px-2'>
         <h1 className=' text-white font-semibold  text-md lg:text-lg w-full overflow-hidden line-clamp-1'>{name}</h1>
         <h6 className=' text-[12px] md:text-[14px] text-[rgb(200,200,200)] font-semibold'>{role[0]?.toUpperCase()+role?.slice(1)}</h6>
         </Link>

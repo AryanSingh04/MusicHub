@@ -1,5 +1,3 @@
-import React from 'react'
-
 const decode = ({str}) => {
     const entities = {
         '&quot;': '"',

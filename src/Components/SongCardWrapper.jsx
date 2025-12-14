@@ -1,6 +1,5 @@
 import React from 'react'
 import SongCard from './SongCard'
-import { useSelector } from 'react-redux'
 
 const SongCardWrapper = ({list}) => {
     console.log(list)

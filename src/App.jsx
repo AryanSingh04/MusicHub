@@ -1,11 +1,6 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import Navbar from './Components/Navbar'
-import Data from "./Components/Data"
 import MusicPlayer  from './Components/MusicPlayer'
-import HomePageApi from './HomePageApi'
 import Home from './Pages/Home'
 import { Provider } from 'react-redux'
 import { store } from './Redux/store'
@@ -14,7 +9,7 @@ import SearchPage from './Pages/SearchPage'
 import SearchType from './Pages/SearchType'
 import SongDetails from './Pages/SongDetails'
 import AlbumDetails from './Pages/AlbumDetails'
-import Footer from './Components/Footer'
+import ArtisitDetails from './Pages/ArtisitDetails'
 function App() {
   
 
@@ -29,9 +24,11 @@ function App() {
         <Route path='/search/:query' element={<SearchPage/>}/>
         <Route path='/search/:type/:query' element={<SearchType/>}/>
         <Route path='/song/:id' element={<SongDetails/>}/>
+        <Route path='/artist/:id' element={<ArtisitDetails/>}/>
         <Route path='/album/:id' element={<AlbumDetails/>}/>
        </Routes>
        <MusicPlayer/>
+       <div className='w-full h-[14vh] bg-black'></div>
       
        </BrowserRouter>    
        </div>

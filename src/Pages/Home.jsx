@@ -1,9 +1,7 @@
-import React, { useEffect, useState ,Suspense} from 'react'
-import HomePageApi from '../HomePageApi'
+import { useEffect, useState} from 'react'
 import AlbumWrapper from '../Components/AlbumWrapper'
 import HomeFallback from '../Components/HomeFallback'
-import backend, { homePage } from '../HomePageApi/backend'
-import ArtistCard from '../Components/ArtistCard'
+import { homePage } from '../HomePageApi/backend'
 import CarasouelArtists from '../Components/CarasouelArtists'
 const Home =() => {
    const [Data,setData]=useState(null)
