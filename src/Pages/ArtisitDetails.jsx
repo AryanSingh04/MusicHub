@@ -12,6 +12,7 @@ const ArtisitDetails = () => {
     const {ActiveSong}=useSelector((s)=>s.player)
     const [loafing,setLoading]=useState(true);
     const [artist,setArtist]=useState(null);
+    //
 
     useEffect(()=>{
     const fetchArtistDetails=async()=>{
