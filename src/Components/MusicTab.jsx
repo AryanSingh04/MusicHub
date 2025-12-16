@@ -2,7 +2,7 @@ import React from 'react'
 import { playSong } from '../HomePageApi/backend';
 import { setActiveSong } from '../Redux/feature/PlayerSlice';
 import { useDispatch, useSelector } from 'react-redux';
-
+import decode from '../Hooks/decode';
 const MusicTab = ({el,i,ActiveSong,list,link}) => {
 
   const dispatch=useDispatch()
@@ -19,7 +19,7 @@ const MusicTab = ({el,i,ActiveSong,list,link}) => {
                 <div className='flex gap-4 w-full '>
                    <img src={el?.image} alt="" className='w-16 aspect-square rounded-full' />
                 <div className='w-[calc(100%-8rem)]  '>
-                  <h1 className='font-bold text-lg w-4/5'>{el?.title}</h1>
+                  <h1 className='font-bold text-lg w-4/5'>{decode({str:el?.title})}</h1>
                   <div className='w-2/5'>
 <p className=' h-fit text-ellipsis overflow-hidden whitespace-nowrap'>{el?.subtitle}</p>
                   </div>

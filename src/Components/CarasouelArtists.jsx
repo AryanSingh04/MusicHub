@@ -23,7 +23,7 @@ const CarasouelArtists = ({list,title}) => {
   
    <div className='relative w-full lg:px-8 flex items-center justify-center h-60 '>
         <div 
-          className='text-[50px] absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 text-white cursor-pointer z-10' 
+          className='text-[50px] hidden md:block absolute left-4 lg:left-8 top-1/2 transform -translate-y-1/2 text-white cursor-pointer z-10' 
           onClick={() => move("left")}
         >
 
@@ -45,7 +45,7 @@ const CarasouelArtists = ({list,title}) => {
           ))}
         </div>
         <div 
-          className='text-[50px] absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 text-white cursor-pointer z-10' 
+          className='text-[50px] hidden md:block absolute right-4 lg:right-8 top-1/2 transform -translate-y-1/2 text-white cursor-pointer z-10' 
           onClick={() => move("right")}
         >
           <CiCircleChevRight />

@@ -42,9 +42,9 @@ const Carousel = ({ list,title }) => {
   <h2 className='px-4 lg:px-12 py-4 font-bold text-3xl text-white text-ellipsis overflow-hidden'>{title}</h2>
   </div>
 
- <div className='relative w-full px-8 flex items-center justify-center '>
+ <div className='relative w-full md:px-8 flex items-center justify-center '>
       <div 
-        className='text-[50px] absolute left-8 top-1/2 transform -translate-y-1/2 text-white cursor-pointer z-10' 
+        className='text-[50px] hidden md:block absolute left-8 top-1/2 transform -translate-y-1/2 text-white cursor-pointer z-10' 
         onClick={() => move("left")}
       >
         <CiCircleChevLeft />
@@ -66,7 +66,7 @@ const Carousel = ({ list,title }) => {
         ))}
       </div>
       <div 
-        className='text-[50px] absolute right-8 top-1/2 transform -translate-y-1/2 text-white cursor-pointer z-10' 
+        className='text-[50px] hidden md:block absolute right-8 top-1/2 transform -translate-y-1/2 text-white cursor-pointer z-10' 
         onClick={() => move("right")}
       >
         <CiCircleChevRight />

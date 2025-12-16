@@ -52,7 +52,7 @@ const MusicPlayer = ({}) => {
 <MusicFeature volume={volume} SetVolume={SetVolume} cancelMusic={cancelMusi}/>
 
 </div>
-<RxCross2 className='lg:hidden text-2xl hover:scale-125 transition-all duration-100 absolute top-4 right-10' onClick={cancelMusi}/>
+<RxCross2 className='lg:hidden text-2xl hover:scale-125 transition-all duration-100 absolute top-4 right-4' onClick={cancelMusi}/>
     </motion.div>
   )
 }

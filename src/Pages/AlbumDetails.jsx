@@ -51,8 +51,8 @@ const AlbumDetails = () => {
     <div className='w-full text-white bg-[rgba(30,29,29,0.5)]'>
      
         <div className='lg:h-[90vh] flex items-center justify-between flex-col lg:flex-row gap-4 md:gap-0'>
-          <div className='w-full h-1/2 lg:w-2/5 lg:h-full flex flex-col items-center justify-center gap-4 pt-8 md:pt-0'>
-          <img src={data?.image.replace("150x150","500x500")} alt="" className='w-2/5  lg:w-3/5 ' />     
+          <div className='w-full h-1/2 md:w-2/5 md:h-full flex flex-col items-center justify-center gap-4 pt-8'>
+          <img src={data?.image.replace("150x150","500x500")} alt="" className='w-4/5  md:w-3/5 ' />     
             <h1  className='w-4/5 lg:w-3/5 font-bold text-white text-center text-2xl lg:text-4xl '>{decode({str:data?.title})}</h1>  
             <p>BY:- {data?.subtitle}</p>     
             <Link to={data?.perma_url} className='w-40 overflow-hidden bg-white/50 hover:bg-white/30 px-8 py-2 rounded-full' target='blank'>
@@ -61,10 +61,10 @@ const AlbumDetails = () => {
           </div>
           <div className='w-full lg:w-3/5  h-screen lg:h-full relative '>
            <div className='py-2  h-[27%]'>
-            <h1 className='font-bold text-white lg:text-3xl my-2 text-2xl'>{decode({str:data?.title})}</h1>
-       {data?.subtitle && <h1 className='font-semibold text-white lg:text-2xl my-2 text-xl'>From:- <Link to={"/album/"+data?.album?.id} className=' cursor-pointer hover:underline underline-offset-4'>{data?.subtitle}</Link> </h1>}
+            <h1 className='font-bold hidden lg:block text-white lg:text-3xl my-2 text-2xl'>{decode({str:data?.title})}</h1>
+       
        <h1 className='my-2'>{decode({str:data?.description})}</h1>
-       <div className='w-full   flex items-center justify-between lg:pr-40 my-2'>
+       <div className='w-full pl-8 sm:pl-0 flex flex-col sm:flex-row gap-2 sm:gap-0 items-start sm:items-center justify-around lg:pr-40 my-2'>
         <h1 className='font-lightbold text-white text-lg'>Duration:- {Math.floor(duration/60)}:{duration%60<10?"0":""}{duration%60 }</h1>
         <h1>Song Count:-{data?.list_count}</h1>
         <h1 className='font-lightbold text-white text-lg'>Playcount:- {
@@ -74,7 +74,7 @@ const AlbumDetails = () => {
        </div>
       
            </div> 
-           <div className='w-full h-[74%] overflow-y-scroll flex flex-col no-scrollbar items-center md:items-start  gap-4 pt-2'>
+           <div className='w-full h-[74%] overflow-y-scroll flex flex-col no-scrollbar items-center lg:items-start  gap-4 py-2'>
            {
             data?.list.map((el,i)=>(
           <MusicTab el={el} key={i} i={i} ActiveSong={ActiveSong} list={data?.list}/>
