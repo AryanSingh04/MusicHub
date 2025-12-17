@@ -16,11 +16,11 @@ const Navbar = () => {
   </div>
 
   {/* Center: search */}
-  <div className="flex-1 flex justify-self-center">
-    <div className="w-full max-w-md">
-      <Search placeholder="Search" />
-    </div>
-  </div>
+  
+  <Search placeholder="Search" />
+
+    
+  
 </div>
 
   )

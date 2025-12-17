@@ -51,7 +51,6 @@ const baseUrl=import.meta.env.VITE_BACKEND_URL;
 
  const albumDetail=async(id)=>{
     try{
-        console.log(`${baseUrl}album/${id}`)
         const res=await axios.get(`${baseUrl}album/${id}`,{
             headers: {
                 'Content-Type': 'application/json',
@@ -76,7 +75,7 @@ const baseUrl=import.meta.env.VITE_BACKEND_URL;
 const songDetail=async(id)=>{
     try{
         const res=await axios.get(`${baseUrl}song/${id}`)
-        return res.data.songs[0];
+        return {song:res.data.songs[0],rescommendations:res.data.recommendations};
     }catch(err){
         console.log(err)
     }}

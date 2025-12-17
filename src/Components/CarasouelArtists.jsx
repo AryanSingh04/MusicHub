@@ -5,7 +5,6 @@ const CarasouelArtists = ({list,title}) => {
     const containerRef = useRef();
 
     const move = (dir) => {
-      console.log({list})
       const container = containerRef.current;
       const scrollAmount = dir === "left" 
         ? container.scrollLeft - (container.offsetWidth + 20)

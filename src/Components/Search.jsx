@@ -12,10 +12,11 @@ const Search = ({placeholder}) => {
       if(e.key=="Enter"){
       navigate("/search/"+query)
       Setquery("")
+      e.target.blur();
     }
     }
   return (
-    <label htmlFor="input" className="search-bar md:w-2/5 h-[50%] rounded-full flex items-center px-4 py-4 justify-between text-white">
+    <label htmlFor="input" className="search-bar  md:w-2/5 h-[50%] rounded-full flex items-center px-4 py-4 justify-between text-white outline outline-2">
       <div className='flex gap-2 items-center'>
       <CiSearch />
         <input type="text" id='input' value={query} placeholder={placeholder} onChange={(e)=>handleChange(e)} className=' bg-transparent focus:outline-none w-3/5 active:bg-transparent focus:bg-transparent appearance-none'  onKeyDown={handleSubmit}/>

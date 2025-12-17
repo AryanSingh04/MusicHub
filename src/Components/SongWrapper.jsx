@@ -2,7 +2,6 @@ import AlbumCard from './AlbumCard';
 
 const SongWrapper = ({list,name}) => {
   
-console.log(list)
 
 if(!list){
   return;

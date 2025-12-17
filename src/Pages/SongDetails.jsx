@@ -8,11 +8,15 @@ import { setActiveSong,playPause } from '../Redux/feature/PlayerSlice'
 import decode from '../Hooks/decode'
 import DetailFallback from '../Components/DetailFallback'
 import { songDetail } from '../HomePageApi/backend'
+import formatTime from '../Hooks/formatTime'
+import Carousel from '../Components/Carasouel'
+import SongCardWrapper from '../Components/SongCardWrapper'
 const SongDetails = () => {
   const dispatch=useDispatch()
   const {ActiveSong,isPlaying}=useSelector((s)=>s.player)
     const {id:songId}=useParams()
     const [Data,setData]=useState(null);
+    const [rec,setRec]=useState(null);
     const [loading,setLoading]=useState(true);
     const handleClick=()=>{
   if(ActiveSong?.id===songId){
@@ -22,19 +26,19 @@ const SongDetails = () => {
   dispatch(setActiveSong({list:[Data],song:Data,i:0}))
   }
     }
-    const formatTime = (time) => {
-      const minutes = Math.floor(time / 60);
-      const seconds = Math.floor(time % 60);
-      return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-    };
+
+    useEffect(()=>{
+      window.scrollTo(0,0)}
+      ,[Data])
+    
     
     useEffect(()=>{
       setData(null)
       const data=async()=>{
         const res= await songDetail(songId);
         try{
-        console.log(res)
-        setData(res)
+        setRec(res?.rescommendations) 
+        setData(res?.song)
         setLoading(false);
        
         }
@@ -84,8 +88,12 @@ const SongDetails = () => {
           <CarasouelArtists list={Data?.more_info.artistMap?.artists} title={"Artists From The Song"}/>
           </div>
          
+         
           </div>
-        </div>
+        </div>{ rec && 
+        <div className='w-full'>
+          <SongCardWrapper list={rec} title={"Recommended Songs"}/>
+        </div>}
         
     </div>
   )

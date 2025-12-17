@@ -18,7 +18,7 @@ const SongCard = ({name,artists,img,list,id,i,}) => {
       const res= playSong(id);
       try{
         dispatch(setActiveSong({list:list,song:list[i],i:i}));
-        console.log(res)
+      
 }
 catch(err){
  console.log(err)
@@ -36,8 +36,8 @@ catch(err){
   <Link className='w-full ' to={"/song/"+id}>
       <p className='text-lg font-semibold w-full text-ellipsis overflow-hidden line-clamp-1  overflow-x-hidden'>{name}</p>
       <p  className='text-white text-sm w-full  text-ellipsis overflow-hidden line-clamp-1  overflow-x-hidden' >
-      {Array.isArray(artists) ? artists.map((e,i) =>{ if(i==artists.length-1){ return( <span key={e.id}>{e.name}.</span>)} else{
-      return ( <span key={e.id}>{e.name},</span>)}
+      {Array.isArray(artists) ? artists.map((e,i) =>{ if(i==artists.length-1){ return( <span key={e?.id+i}>{e.name}.</span>)} else{
+      return ( <span key={e?.id+i}>{e.name},</span>)}
       }) : artists}
         </p>
        

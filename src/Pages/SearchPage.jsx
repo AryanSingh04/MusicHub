@@ -8,13 +8,11 @@ const SearchPage = () => {
     const [data,setData]=useState()
     const [loading,setLoading]=useState(true);
     const q=query.replace(" ","+")
-    console.log(q)
   useEffect(()=>{
     async function getResults(){
       const res= await searchPage(q) ;
       try{
        
-         console.log(res);
          setData(res);
          setLoading(false)
        

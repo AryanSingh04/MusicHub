@@ -5,7 +5,6 @@ import MusicTab from '../Components/MusicTab';
 import { useSelector } from 'react-redux';
 import Carousel from '../Components/Carasouel';
 import DetailFallback from '../Components/DetailFallback';
-import decode from 'he';
 
 const ArtisitDetails = () => {
     

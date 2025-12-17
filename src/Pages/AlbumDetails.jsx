@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 // import { FaPlay,FaPause } from 'react-icons/fa6'
 import CarasouelArtists from '../Components/CarasouelArtists'
 import Carasouel from '../Components/Carasouel'
-// import { setActiveSong, } from '../Redux/feature/PlayerSlice'
+import formatTime from '../Hooks/formatTime'
 import { useSelector } from 'react-redux'
 import { albumDetail } from '../HomePageApi/backend'
 import MusicTab from '../Components/MusicTab'
@@ -22,13 +22,10 @@ const AlbumDetails = () => {
   useEffect(()=>{
    const fetchAlbum=async()=>{
      const res=await albumDetail(albumId);
-     console.log(res)
-     window.scrollTo(0,0)
      setData(res.albumDetails)
      setLoading(false);
      setRec(res?.albumRecommendations)
      setTrending(res?.trendingAlbums)
-     console.log(res.albumRecommendations)
      let sum=0
      res?.albumDetails?.list.map((el)=>{
       sum+=Number((el.play_count));
@@ -65,7 +62,7 @@ const AlbumDetails = () => {
        
        <h1 className='my-2'>{decode({str:data?.description})}</h1>
        <div className='w-full pl-8 sm:pl-0 flex flex-col sm:flex-row gap-2 sm:gap-0 items-start sm:items-center justify-around lg:pr-40 my-2'>
-        <h1 className='font-lightbold text-white text-lg'>Duration:- {Math.floor(duration/60)}:{duration%60<10?"0":""}{duration%60 }</h1>
+        <h1 className='font-lightbold text-white text-lg'>Duration:- {formatTime(duration)}</h1>
         <h1>Song Count:-{data?.list_count}</h1>
         <h1 className='font-lightbold text-white text-lg'>Playcount:- {
           playCount
